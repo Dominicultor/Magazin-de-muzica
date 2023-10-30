@@ -5,12 +5,12 @@ using namespace std;
 
 class Product{
 private:
-    int ProductId;
+    int ProductId{};
     string name;
-    float price;
+    float price{};
     string description;
     string brand;
-    bool availability;
+    bool availability{};
     string category;
     string imageURL;
 
@@ -109,12 +109,12 @@ public:
 
 class Employee {
 private:
-    int employeeID;
+    int employeeID{};
     string firstName;
     string lastName;
     string position;
     string workSchedule;
-    double salary;
+    double salary{};
 
 public:
     // Constructor
