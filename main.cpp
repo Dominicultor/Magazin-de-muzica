@@ -3,7 +3,7 @@
 #include <utility>
 using namespace std;
 
-class product{
+class Product{
 private:
     int ProductId;
     string name;
@@ -15,8 +15,9 @@ private:
     string imageURL;
 
 public:
-    product()= default;
-    product(int pid, string Name, float Price, string Description, string Brand, bool Availability, string Category, string Image){
+    Product()= default;// default constructor
+    //assignment constructor
+    Product(int pid, string Name, float Price, string Description, string Brand, bool Availability, string Category, string Image){
         ProductId=pid;
         name=std::move(Name);
         price=Price;
@@ -32,13 +33,13 @@ public:
 
     }
     //copy constructor
-    product(const product &other) = default;
+    Product(const Product &other) = default;
 
     // Overloading the assignment operator
-    product & operator=(const product &other) = default;
+    Product & operator=(const Product &other) = default;
 
-
-    friend ostream &operator<<(ostream &output, const product &p) {
+    // Overloading the << operator
+    friend ostream &operator<<(ostream &output, const Product &p) {
         output << "Product ID: " << p.ProductId << endl;
         output << "Name: " << p.name << endl;
         output << "Price: " << p.price <<" EUR"<< endl;
@@ -52,8 +53,9 @@ public:
         output << "Image URL: " << p.imageURL << endl;
         return output;
     }
-    ~product() {
-        // Perform any necessary cleanup operations here
+    //destructor
+    ~Product() {
+
         cout << "Product " << ProductId << " has been destroyed." << endl;
     }
 
@@ -72,7 +74,7 @@ public:
     customer(string first, string last, string phone, string address)
             : firstName(std::move(first)), lastName(std::move(last)), phoneNumber(std::move(phone)), deliveryAddress(std::move(address)) {}
 
-    //destructor
+
     friend ostream &operator<<(ostream &output, const customer &c) {
         output << "First Name: " << c.firstName << endl;
         output << "Last Name: " << c.lastName << endl;
@@ -81,8 +83,9 @@ public:
         return output;
     }
 
-    // Overloaded assignment operator (=)
+    // Overloaded assignment operator =
     customer & operator=(const customer &other) = default;
+    //destructor
     ~customer() {cout<<"Testing"<<endl;}
 };
 
@@ -114,14 +117,15 @@ private:
     double salary;
 
 public:
-    Employee()= default;
     // Constructor
+    Employee()= default;
+    //Assignment constructor
     Employee(int id, string first, string last, string pos, string schedule, double sal);
 
-    // Copy constructor
+    //Copy constructor
     Employee(const Employee &other)= default;
 
-
+    //overloading = operator
     Employee& operator=(const Employee &other) = default;
 
     // Overloading the << operator
@@ -133,6 +137,7 @@ public:
                << "Salary: " << employee.salary << endl;
         return output;
     }
+    //Destructor
     ~Employee(){cout<<"Test Employee";};
 };
 
@@ -141,7 +146,7 @@ Employee::Employee(int id, string first, string last, string pos, string schedul
 
 
 int main(){
-product p1(12,"Guitar", 100.50,"Electric guitar","Gibson",true,"Instruments","bugdfjvbdcujhm");
+Product p1(12,"Guitar", 100.50,"Electric guitar","Gibson",true,"Instruments","bugdfjvbdcujhm");
 cout<<p1;
 //product p2=p1;
 //cout<<p2;
