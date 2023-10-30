@@ -32,21 +32,10 @@ public:
 
     }
     //copy constructor
-    product(const product &other)
-            : ProductId(other.ProductId), name(other.name), price(other.price), description(other.description), brand(other.brand), availability(other.availability), category(other.category), imageURL(other.imageURL) {
-    }
+    product(const product &other) = default;
 
     // Overloading the assignment operator
-    void operator=(const product &other) {
-        ProductId = other.ProductId;
-        name = other.name;
-        price = other.price;
-        description = other.description;
-        brand = other.brand;
-        availability = other.availability;
-        category = other.category;
-        imageURL = other.imageURL;
-    }
+    product & operator=(const product &other) = default;
 
 
     friend ostream &operator<<(ostream &output, const product &p) {
@@ -81,7 +70,7 @@ public:
     customer()=default;
     //assignment constructor
     customer(string first, string last, string phone, string address)
-            : firstName(first), lastName(last), phoneNumber(phone), deliveryAddress(address) {}
+            : firstName(std::move(first)), lastName(std::move(last)), phoneNumber(std::move(phone)), deliveryAddress(std::move(address)) {}
 
     //destructor
     friend ostream &operator<<(ostream &output, const customer &c) {
@@ -93,16 +82,11 @@ public:
     }
 
     // Overloaded assignment operator (=)
-    void operator=(const customer &other) {
-        firstName = other.firstName;
-        lastName = other.lastName;
-        phoneNumber = other.phoneNumber;
-        deliveryAddress = other.deliveryAddress;
-    }
+    customer & operator=(const customer &other) = default;
     ~customer() {cout<<"Testing"<<endl;}
 };
 
-class Administrator {
+class __attribute__((unused)) Administrator {
 private:
     const string username;
     const string password;
@@ -117,7 +101,7 @@ public:
 
 
     // Destructor
-    ~Administrator() {}
+    ~Administrator() = default;
 };
 
 class Employee {
@@ -130,25 +114,15 @@ private:
     double salary;
 
 public:
-    Employee(){};
+    Employee()= default;
     // Constructor
-    Employee(int id, const string &first, const string &last, const string &pos, const string &schedule, double sal)
-            : employeeID(id), firstName(first), lastName(last), position(pos), workSchedule(schedule), salary(sal) {}
+    Employee(int id, string first, string last, string pos, string schedule, double sal);
 
     // Copy constructor
-    Employee(const Employee &other)
-            : employeeID(other.employeeID), firstName(other.firstName), lastName(other.lastName),
-              position(other.position), workSchedule(other.workSchedule), salary(other.salary) {}
+    Employee(const Employee &other)= default;
 
 
-    void operator=(const Employee &other) {
-        employeeID = other.employeeID;
-        firstName = other.firstName;
-        lastName = other.lastName;
-        position = other.position;
-        workSchedule = other.workSchedule;
-        salary = other.salary;
-    }
+    Employee& operator=(const Employee &other) = default;
 
     // Overloading the << operator
     friend ostream &operator<<(ostream &output, const Employee &employee) {
@@ -162,20 +136,22 @@ public:
     ~Employee(){cout<<"Test Employee";};
 };
 
+Employee::Employee(int id, string first, string last, string pos, string schedule, double sal)
+        : employeeID(id), firstName(std::move(first)), lastName(std::move(last)), position(std::move(pos)), workSchedule(std::move(schedule)), salary(sal) {}
+
 
 int main(){
-/*product p1(12,"Guitar", 100.50,"Electric guitar","Gibson",true,"Instruments","bugdfjvbdcujhm");
+product p1(12,"Guitar", 100.50,"Electric guitar","Gibson",true,"Instruments","bugdfjvbdcujhm");
 cout<<p1;
-product p2=p1;
-cout<<p2;
+//product p2=p1;
+//cout<<p2;
 customer c1("Alex", "Negru", "0765736524", "Strada 123");
-customer c2=c1;
-cout<<c2;
-cout<<c1;*/
+//customer c2=c1;
+//cout<<c2;
+cout<<c1;
     Employee employee1(1001, "John", "Doe", "Sales Associate", "Monday-Friday, 9 AM - 5 PM", 45000.0);
     cout<<employee1;
-    Employee employee2=employee1;
-    cout<<employee2;
+
 
     return 0;
 }
