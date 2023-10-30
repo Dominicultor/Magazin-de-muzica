@@ -80,7 +80,7 @@ public:
     ~customer() {cout<<"Testing"<<endl;}
 };
 
-class __attribute__((unused)) Administrator {
+/*class __attribute__((unused)) Administrator {
 private:
     const string username;
     const string password;
@@ -96,7 +96,7 @@ public:
 
     // Destructor
     ~Administrator() = default;
-};
+};*/
 
 class Employee {
 private:
