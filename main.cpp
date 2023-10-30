@@ -17,9 +17,8 @@ private:
 public:
     Product()= default;// default constructor
     //assignment constructor
-    Product(int pid, string Name, float Price, string Description, string Brand, bool Availability, string Category, string Image): name(Name){
+    Product(int pid, string Name, float Price, string Description, string Brand, bool Availability, string Category, string Image): name(std::move(Name)){
         ProductId=pid;
-        name=std::move(Name);
         price=Price;
         description=std::move(Description);
         brand=std::move(Brand);
