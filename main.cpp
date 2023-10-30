@@ -1,6 +1,6 @@
 #include <iostream>
 #include <string>
-#include <vector>
+#include <utility>
 using namespace std;
 
 class product{
@@ -15,16 +15,16 @@ private:
     string imageURL;
 
 public:
-    product(){};
+    product()= default;
     product(int pid, string Name, float Price, string Description, string Brand, bool Availability, string Category, string Image){
         ProductId=pid;
-        name=Name;
+        name=std::move(Name);
         price=Price;
-        description=Description;
-        brand=Brand;
+        description=std::move(Description);
+        brand=std::move(Brand);
         availability=Availability;
-        category=Category;
-        imageURL=Image;
+        category=std::move(Category);
+        imageURL=std::move(Image);
 
 
 
@@ -78,7 +78,7 @@ private:
 
 public:
     //default constructor
-    customer() : firstName(""), lastName(""), phoneNumber(""), deliveryAddress("") {}
+    customer()=default;
     //assignment constructor
     customer(string first, string last, string phone, string address)
             : firstName(first), lastName(last), phoneNumber(phone), deliveryAddress(address) {}
@@ -118,7 +118,6 @@ public:
 
     // Destructor
     ~Administrator() {}
-    bool Authen
 };
 
 class Employee {
