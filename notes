@@ -1,0 +1,6 @@
+ RegularCustomer regularCustomer("John", "Doe", "john@example.com", "123456789", "123 Main St", "john_user", "password123");
+    VIPCustomer vipCustomer("Jane", "Doe", "jane@example.com", "987654321", "456 Oak St", "jane_user", "securepass");
+
+ pointers pp;
+ pp.p=&regularCustomer;
+ pp.p->interactiveLogin();
