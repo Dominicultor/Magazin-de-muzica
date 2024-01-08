@@ -32,7 +32,13 @@ void RegularCustomer::interactiveLogin() const {
     } else {
         std::cout << "Login unsuccessful." << std::endl;
     }
-    // Additional logic specific to RegularCustomer if needed...
+
+}
+RegularCustomer RegularCustomer::clone() const {
+    // Create a new RegularCustomer object and copy the attributes
+    RegularCustomer clonedCustomer(*this);
+    return clonedCustomer;
 }
 
-// Other member functions specific to RegularCustomer...
+
+

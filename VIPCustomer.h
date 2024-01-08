@@ -5,8 +5,8 @@
 
 class VIPCustomer : public CustomerAccount {
 protected:
-    double amountSpent; // New attribute
-    int points;         // New attribute
+    double amountSpent;
+    int points;
 
 public:
     VIPCustomer()=default;

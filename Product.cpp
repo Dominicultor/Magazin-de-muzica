@@ -56,4 +56,17 @@ Product& Product::operator=(const Product& other) {
 // Destructor
 Product::~Product() {
     std::cout << "";
+
+
 }
+
+ void Product::show_inventory() {
+    std:: string s;
+    std::ifstream inventory("inventory.txt");
+    while(getline(inventory,s)){std::cout<<s<<"\n";};
+    inventory.close();
+
+
+    }
+
+

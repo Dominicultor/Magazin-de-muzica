@@ -3,7 +3,7 @@
 
 #include <iostream>
 #include <string>
-
+#include <fstream>
 class Product {
 protected:
 
@@ -35,6 +35,10 @@ public:
 
     // Destructor
     ~Product();
+
+    static void show_inventory();
+
+
 };
 
 #endif // PRODUCT_H

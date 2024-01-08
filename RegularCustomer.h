@@ -5,8 +5,8 @@
 
 class RegularCustomer : public CustomerAccount {
 protected:
-    double amountSpent; // New attribute
-    int points;         // New attribute
+    double amountSpent;
+    int points;
 
 public:
     RegularCustomer()=default;
@@ -21,8 +21,12 @@ public:
     // Implementation of interactiveLogin function for RegularCustomer
     void interactiveLogin() const override;
 
-    // Other member functions specific to RegularCustomer...
+
+    RegularCustomer clone() const;
 };
+
+
+
 
 #endif // REGULAR_CUSTOMER_H
 
